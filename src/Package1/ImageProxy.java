@@ -31,4 +31,9 @@ public class ImageProxy implements Element {
         _realImage = new Image(get_imageName());
         _realImage.print();
     }
+
+    @Override
+    public void Accept(BookStatistics bookStatistics) {
+        bookStatistics.Visit(this);
+    }
 }

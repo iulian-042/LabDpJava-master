@@ -50,4 +50,11 @@ public class Section implements Element {
             element.print();
         }
     }
+
+    @Override
+    public void Accept(BookStatistics bookStatistics) {
+        for(Element element:content){
+            element.Accept(bookStatistics);
+        }
+    }
 }

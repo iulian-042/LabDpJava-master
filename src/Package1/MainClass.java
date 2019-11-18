@@ -33,7 +33,8 @@ public class MainClass {
 
         //region Proxy Pattern
 
-        /*long StartTime = System.currentTimeMillis();
+        /*
+        long StartTime = System.currentTimeMillis();
         ImageProxy img1 = new ImageProxy("Image 1");
         ImageProxy img2 = new ImageProxy("Image 2");
         ImageProxy img3 = new ImageProxy("Image 3");
@@ -64,27 +65,47 @@ public class MainClass {
         */
         //endregion
 
-            Section cap1 = new Section("Capitolul 1");
-            Paragraph p1 = new Paragraph("Paragraph 1");
-            cap1.AddElement(p1);
-            Paragraph p2 = new Paragraph("Paragraph 2");
-            cap1.AddElement(p2);
-            Paragraph p3 = new Paragraph("Paragraph 3");
-            cap1.AddElement(p3);
-            Paragraph p4 = new Paragraph("Paragraph 4");
-            cap1.AddElement(p4);
-            System.out.println("Printing without Alignment");
+        //region Strategy Pattern
+        /*
+        Section cap1 = new Section("Capitol 1");
+        Paragraph p1 = new Paragraph("Paragraph 1");
+        cap1.AddElement(p1);
+        Paragraph p2 = new Paragraph("Paragraph 2");
+        cap1.AddElement(p2);
+        Paragraph p3 = new Paragraph("Paragraph 3");
+        cap1.AddElement(p3);
 
-            System.out.println();
-            cap1.print();
-            p1.setAlignStrategy(new AlignCenter());
-            p2.setAlignStrategy(new AlignRight());
-            p3.setAlignStrategy(new AlignLeft());
-            System.out.println();
-            System.out.println("Printing with Alignment");
-            System.out.println();
-            cap1.print();
+        System.out.println("Printare fara align: ");
+        cap1.print();
 
+        System.out.println("Printare cu align: ");
+        p1.SetStrategy(new AlignLeft());
+        p2.SetStrategy(new AlignCenter());
+        p3.SetStrategy(new AlignRight());
+        cap1.print();
+        */
+        //endregion
+
+        //region Visitor Pattern
+
+        Section cap1 = new Section("Capitolul 1");
+        Paragraph p1 = new Paragraph("Paragraph 1");
+        cap1.AddElement(p1);
+        Paragraph p2 = new Paragraph("Paragraph 2");
+        cap1.AddElement(p2);
+        Paragraph p3 = new Paragraph("Paragraph 3");
+        cap1.AddElement(p3);
+        Paragraph p4 = new Paragraph("Paragraph 4");
+        cap1.AddElement(p4);
+        cap1.AddElement(new ImageProxy("ImageOne"));
+        cap1.AddElement(new Image("ImageTwo"));
+        cap1.AddElement(new Paragraph("Some text"));
+        cap1.AddElement(new Table("Table 1"));
+        BookStatistics stats = new BookStatistics();
+        cap1.Accept(stats);
+        stats.PrintStatistics();
+
+        //endregion
     }
 
 }

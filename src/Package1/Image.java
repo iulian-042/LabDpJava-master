@@ -28,4 +28,9 @@ public class Image implements Element {
     public void print() {
         System.out.println("Image name: "+get_imageName());
     }
+
+    @Override
+    public void Accept(BookStatistics bookStatistics) {
+        bookStatistics.Visit(this);
+    }
 }

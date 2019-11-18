@@ -20,4 +20,9 @@ public class Table implements Element {
     public void print() {
         System.out.println("Table name: "+get_tableName());
     }
+
+    @Override
+    public void Accept(BookStatistics bookStatistics) {
+        bookStatistics.Visit(this);
+    }
 }

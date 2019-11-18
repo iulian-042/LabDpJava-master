@@ -2,7 +2,8 @@ package Package1;
 
 public class AlignRight implements AlignStrategy {
 
-    public void print(String text) {
-        System.out.println(text + "++++++++");
+    @Override
+    public void Print(String text) {
+        System.out.println("+++++"+text);
     }
 }

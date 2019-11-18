@@ -87,7 +87,7 @@ public class MainClass {
         //endregion
 
         //region Visitor Pattern
-
+        /*
         Section cap1 = new Section("Capitolul 1");
         Paragraph p1 = new Paragraph("Paragraph 1");
         cap1.AddElement(p1);
@@ -104,8 +104,14 @@ public class MainClass {
         BookStatistics stats = new BookStatistics();
         cap1.Accept(stats);
         stats.PrintStatistics();
-
+        */
         //endregion
+
+        //region JSON Builder
+        Builder jsonBuilder = new JSONBuilder("book.json");
+        jsonBuilder.build();
+        Element myBook = jsonBuilder.getResult();
+        myBook.print();
     }
 
 }

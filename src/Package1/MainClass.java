@@ -108,10 +108,20 @@ public class MainClass {
         //endregion
 
         //region JSON Builder
+        /*
         Builder jsonBuilder = new JSONBuilder("book.json");
         jsonBuilder.build();
         Element myBook = jsonBuilder.getResult();
         myBook.print();
+
+         */
+
+
+        Command cmd1 = new OpenCommand("book.json");
+        cmd1.execute();
+        Command cmd2 = new StastisticsCommand();
+        cmd2.execute();
+        DocumentManager.getInstance().getBook().print();
     }
 
 }

@@ -3,7 +3,9 @@ package Package1;
 public class ImageProxy implements Element {
 
     private String _imageName;
+    private String _oldImageName;
     private Image _realImage;
+
 
     public ImageProxy(String imageTitle) {
         this._imageName = imageTitle;
@@ -25,6 +27,11 @@ public class ImageProxy implements Element {
         this._realImage = _realImage;
     }
 
+    public void setNewValue(String newValue) {
+        this._oldImageName = this._imageName;
+        this._imageName = newValue;
+
+    }
 
     @Override
     public void print() {

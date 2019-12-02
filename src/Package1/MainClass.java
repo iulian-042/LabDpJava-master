@@ -115,13 +115,45 @@ public class MainClass {
         myBook.print();
 
          */
-
-
+        // region Command
+        /*
         Command cmd1 = new OpenCommand("book.json");
         cmd1.execute();
         Command cmd2 = new StastisticsCommand();
         cmd2.execute();
         DocumentManager.getInstance().getBook().print();
-    }
 
+         */
+
+        //region ObservableObservers
+
+
+            Section cap1 = new Section("Capitolul 1");
+            Paragraph p1 = new Paragraph("Paragraph 1");
+            cap1.AddElement(p1);
+            Paragraph p2 = new Paragraph("Paragraph 2");
+            cap1.AddElement(p2);
+            Paragraph p3 = new Paragraph("Paragraph 3");
+            cap1.AddElement(p3);
+            Paragraph p4 = new Paragraph("Paragraph 4");
+            cap1.AddElement(p4);
+            cap1.AddElement(new ImageProxy("ImageOne"));
+            cap1.AddElement(new Image("ImageTwo"));
+            cap1.AddElement(new Paragraph("Some text"));
+            cap1.AddElement(new Table("Table 1"));
+            FirstObserver firstObserver = new FirstObserver("first");
+            SecondObserver secondObserver = new SecondObserver("second");
+            cap1.addObserver(firstObserver);
+            cap1.addObserver(secondObserver);
+            p1.addObserver(firstObserver);
+            p1.addObserver(secondObserver);
+            p2.addObserver(firstObserver);
+            cap1.setNewValue("CHAPTER 1");
+            p1.setNewValue("PARAGRAPH 2");
+            p2.setNewValue("PARAGRAPH 3");
+            cap1.removeObserver(firstObserver);
+            cap1.setNewValue("CHAPTER 1.1");
+        }
 }
+
+

@@ -1,8 +1,12 @@
 package Package1;
 
-public class Table implements Element {
+import java.util.ArrayList;
+
+public class Table implements Element, Observable {
 
     private String _tableName;
+    private String _oldTableName;
+    public ArrayList<Observer> observers = new ArrayList<>();
 
     public String get_tableName() {
         return _tableName;
@@ -14,6 +18,28 @@ public class Table implements Element {
 
     public Table(String tableName){
         _tableName = tableName;
+    }
+
+    public void setNewValue(String newValue) {
+        this._oldTableName = this._tableName;
+        this._tableName = newValue;
+        notifyObservers();
+    }
+
+    @Override
+    public void addObserver(Observer obs) {
+        observers.add(obs);
+    }
+
+    @Override
+    public void removeObserver(Observer obs) {
+        observers.remove(obs);
+    }
+
+    public void notifyObservers(){
+        for(Observer obs : observers){
+            obs.update(this._oldTableName, this._tableName);
+        }
     }
 
     @Override

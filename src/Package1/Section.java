@@ -2,10 +2,12 @@ package Package1;
 
 import java.util.ArrayList;
 
-public class Section implements Element {
+public class Section implements Element, Observable {
 
     private String _sectionTitle;
+    private String _oldSectionTitle;
     public ArrayList<Element> content;
+    public ArrayList<Observer> observers = new ArrayList<>();
 
     public Section(String title){
         this._sectionTitle = title;
@@ -39,6 +41,30 @@ public class Section implements Element {
 
     public void setContent(ArrayList<Element> content) {
         this.content = content;
+    }
+
+    @Override
+    public void setNewValue(String newValue) {
+        this._oldSectionTitle = this._sectionTitle;
+        this._sectionTitle = newValue;
+        notifyObservers();
+
+    }
+
+    @Override
+    public void addObserver(Observer obs) {
+        observers.add(obs);
+    }
+
+    @Override
+    public void removeObserver(Observer obs) {
+        observers.remove(obs);
+    }
+
+    public void notifyObservers(){
+        for(Observer obs : observers){
+            obs.update(this._oldSectionTitle, this._sectionTitle);
+        }
     }
 
     @Override

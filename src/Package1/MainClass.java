@@ -127,7 +127,7 @@ public class MainClass {
 
         //region ObservableObservers
 
-
+        /*
             Section cap1 = new Section("Capitolul 1");
             Paragraph p1 = new Paragraph("Paragraph 1");
             cap1.AddElement(p1);
@@ -153,6 +153,33 @@ public class MainClass {
             p2.setNewValue("PARAGRAPH 3");
             cap1.removeObserver(firstObserver);
             cap1.setNewValue("CHAPTER 1.1");
+
+
+         */
+
+        //region Memento
+        Section cap1 = new Section("Capitolul 1");
+        cap1.AddElement(new Paragraph("Moto capitol"));
+        cap1.AddElement(new Paragraph("Another One"));
+        cap1.AddElement(new Paragraph("Another Two"));
+        cap1.AddElement(new Paragraph("Another Three"));
+        DocumentManager.getInstance().setBook(cap1);
+        System.out.println("Book Content: ");
+        DocumentManager.getInstance().getBook().print();
+        DeleteCommand dc = new DeleteCommand();
+        dc.execute();
+        System.out.println("Book Content after the first delete: ");
+        DocumentManager.getInstance().getBook().print();
+        (new DeleteCommand()).execute();
+        System.out.println("Book Content after the second delete: ");
+        DocumentManager.getInstance().getBook().print();
+        Command undoCommand = new UndoCommand();
+        undoCommand.execute();
+        System.out.println("Book Content after first undo: ");
+        DocumentManager.getInstance().getBook().print();
+        undoCommand.execute();
+        System.out.println("Book Content after second undo: ");
+        DocumentManager.getInstance().getBook().print();
         }
 }
 

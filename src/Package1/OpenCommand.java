@@ -20,4 +20,6 @@ public class OpenCommand implements Command {
         Element myBook = jsonBuilder.getResult();
         DocumentManager.getInstance().setBook(myBook);
     }
+    public void unexecute() {
+    }
 }

@@ -6,6 +6,11 @@ public class ImageProxy implements Element {
     private String _oldImageName;
     private Image _realImage;
 
+    public Element copy() {
+        ImageProxy newImage = new ImageProxy(this._imageName);
+        newImage._oldImageName = this._oldImageName;
+        return newImage;
+    }
 
     public ImageProxy(String imageTitle) {
         this._imageName = imageTitle;

@@ -6,4 +6,9 @@ public class StastisticsCommand implements Command{
         DocumentManager.getInstance().getBook().Accept(stats);
         stats.PrintStatistics();
     }
+
+    @Override
+    public void unexecute() {
+
+    }
 }

@@ -1,6 +1,7 @@
 package Package1;
 
 import java.util.ArrayList;
+import java.util.Iterator;
 
 public class Section implements Element, Observable {
 
@@ -51,6 +52,10 @@ public class Section implements Element, Observable {
 
     }
 
+    public void removeLast() {
+        this.content.remove(this.content.size() - 1);
+    }
+
     @Override
     public void addObserver(Observer obs) {
         observers.add(obs);
@@ -82,5 +87,18 @@ public class Section implements Element, Observable {
         for(Element element:content){
             element.Accept(bookStatistics);
         }
+    }
+    public Element copy() {
+        Section newObject = new Section(this._sectionTitle);
+        newObject._oldSectionTitle = this._oldSectionTitle;
+        newObject.observers.addAll(this.observers);
+        Iterator var3 = this.content.iterator();
+
+        while(var3.hasNext()) {
+            Element element = (Element)var3.next();
+            newObject.content.add(element.copy());
+        }
+
+        return newObject;
     }
 }

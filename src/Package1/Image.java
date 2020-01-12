@@ -16,6 +16,13 @@ public class Image implements Element, Observable {
         this._imageName = _imageName;
     }
 
+    public Element copy() {
+        Image newImage = new Image(this._imageName);
+        newImage._oldImageName = this._oldImageName;
+        newImage.observers.addAll(this.observers);
+        return newImage;
+    }
+
     public Image(String imageName){
         _imageName = imageName;
 

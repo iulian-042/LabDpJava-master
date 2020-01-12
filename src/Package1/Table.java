@@ -51,4 +51,11 @@ public class Table implements Element, Observable {
     public void Accept(BookStatistics bookStatistics) {
         bookStatistics.Visit(this);
     }
+
+    public Element copy() {
+        Table newImage = new Table(this._tableName);
+        newImage._oldTableName = this._oldTableName;
+        newImage.observers.addAll(this.observers);
+        return newImage;
+    }
 }

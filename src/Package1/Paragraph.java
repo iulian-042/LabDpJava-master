@@ -36,6 +36,13 @@ public class Paragraph implements Element, Observable {
         notifyObservers();
     }
 
+    public Element copy() {
+        Paragraph newImage = new Paragraph(this._paragraphName);
+        newImage._oldParagraphName = this._oldParagraphName;
+        newImage.observers.addAll(this.observers);
+        return newImage;
+    }
+
     public void addObserver(Observer obs) {
         observers.add(obs);
     }
